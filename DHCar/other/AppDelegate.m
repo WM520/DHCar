@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "MainNavController.h"
+#import "MainTabBarController.h"
 
 @interface AppDelegate ()
 
@@ -17,7 +19,26 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    // 初始化rootView
+    [self customRootViewController];
+    
+    
     return YES;
+}
+/**
+ *  初始化rootView
+ */
+- (void)customRootViewController
+{
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.window.backgroundColor = [UIColor whiteColor];
+    [self.window makeKeyAndVisible];
+    
+    MainTabBarController *tab = [[MainTabBarController alloc] init];
+//    MainNavController *navRoot = [[MainNavController alloc] initWithRootViewController:tab];
+    self.window.rootViewController = tab;
+    
+    
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
